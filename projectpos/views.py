@@ -7,6 +7,9 @@ from .models import Table
 from django.core.mail import send_mail
 from .models import Order
 from .models import Tip
+from .models import Bill_Setting
+
+from .models import Orderlish
 
 # Create your views here.
 # Start Tong
@@ -82,8 +85,16 @@ def Rawmaterial(request):
 # Start Top
 
 
-def AddMenu(request):
-    return render(request, 'AddMenu.html')
+def AddFood(request):
+    fn=request.POST.get('abcdef',False)
+    print(request)
+    print(fn)
+    if(fn != False):
+        addtypefood=Order.objects.create(type_food = fn)
+        addtypefood.save()
+    
+    data=Order.objects.all()
+    return render(request,'addFood.html',{'posts':data})
 
 
 def DeleteDrink(request):
@@ -187,10 +198,38 @@ def AddMenu(request):
 
 
 def AddTable(request):
-    return render(request, 'AddTable.html')
+    A=request.POST.get('NumberofTable',False)
+    B=request.POST.get('QuantityofTable',False)
 
+    print(request)
+    print(A)
+    print(B)
+    if(A!= False and B!= False and C!= False and D!= False):
+        Tables=Table.objects.create(number = A,Quantity = B)
+        Tables.save()
+        A = False
+        B = False
+    data=Table.objects.all()
+    return render(request,'AddTable.html')
 
 def BillSetting(request):
+    A=request.POST.get('StoreName',False)
+    B=request.POST.get('VAT',False)
+    C=request.POST.get('SC',False)
+    D=request.POST.get('EndTextBill',False)
+    print(request)
+    print(A)
+    print(B)
+    print(C)
+    print(D)
+    if(A!= False and B!= False and C!= False and D!= False):
+        BillSet=Bill_Setting.objects.create(StoreName = A,VAT = B,SC = C,EndTextBill = D)
+        BillSet.save()
+        A = False
+        B = False
+        C = False
+        D = False
+    data=Bill_Setting.objects.all()
     return render(request, 'BillSetting.html')
 
 
@@ -207,11 +246,17 @@ def ChangeFood(request):
 
 
 def DeleteTable(request):
-    return render(request, 'DeleteTable.html')
+    Deletes = Table.objects.all()
+    return render(request, 'DeleteTable.html',{'deletes': Deletes})
+def DelTable(request,id):
+    deletetable = Table.objects.get(id=id)
+    deletetable.delete()
+    Deletes = Table.objects.all()
+    return render(request, 'DeleteTable.html',{'deletes': Deletes})
 
 
 def listCustomer(request):
-    data = ListCustomer.objects.all()
+    data = Orderlish.objects.all()
     return render(request, 'listCustomer.html', {'posts': data})
 
 # End Kris

@@ -62,14 +62,14 @@ class Order(models.Model):
     type_food = models.TextField(max_length=255)
     #List_ID = models.ForeignKey( Orderlish,on_delete=models.CASCADE)
 
+class Bill_Setting(models.Model):
+    StoreName = models.TextField()
+    VAT = models.IntegerField()
+    SC = models.IntegerField()
+    EndTextBill = models.TextField()
 
 
-class Orderlish(models.Model):
-    #List_ID = models.AutoField(auto_created=True)
-    types_order = models.TextField(max_length=255)
-    number_order = models.TextField(max_length=255)
-    number_table = models.TextField(max_length=255)
-    status = models.TextField(max_length=3)
+
 
 class receipt(models.Model):
 	id = models.IntegerField(auto_created=True,primary_key=True)

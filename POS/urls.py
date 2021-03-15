@@ -19,6 +19,7 @@ from projectpos import views
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf import settings
+from django.urls import path
 
 urlpatterns = [
 
@@ -32,7 +33,7 @@ urlpatterns = [
     url(r'Rawmaterial/', views.Rawmaterial),
 
     # end Tong
-    url(r'AddFood', views.AddMenu),
+    url(r'AddFood', views.AddFood),
     url(r'DeleteDrink', views.DeleteDrink),
     url(r'DeleteFood', views.DeleteFood),
     url(r'Deleteice', views.Deleteice),
@@ -57,5 +58,15 @@ urlpatterns = [
     url(r'Report', views.Report),
     url(r'Tipsd', views.Tipsd),
     # end Bank
+    url(r'AddMenu',views.AddMenu),
+    url(r'AddTable',views.AddTable),
+    url(r'BillSetting', views.BillSetting),
+    url(r'BuyFoodBackHome', views.BuyFoodBackHome),
+    url(r'BuyMoreFood', views.BuyMoreFood),
+    url(r'ChangeFood', views.ChangeFood),
+    url(r'DeleteTable', views.DeleteTable),
+    url(r'listCustomer', views.listCustomer),
+    path(r'Delete/<int:id>',views.DelTable),
+    #end Kris
 ]
 urlpatterns += staticfiles_urlpatterns()
