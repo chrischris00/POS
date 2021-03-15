@@ -55,7 +55,7 @@
                     <p style="text-align: center; margin: auto;" class="text-white">ลบโต้ะ</p>
                 </div>
             </nav>
-            <div class="container">
+            <div >
                 <div class="row" style="margin-top:80px;margin-left:0px">
                     <div>
                         <div class="bd-example">
@@ -63,11 +63,14 @@
                                 {% for delete in deletes %}
                                 <a href="Delete/{{delete.id}}" onclick="alert()">
                                     <div class="card">
-                                        <div class="card-header">
+                                        <center>
+                                            <div class="card-header">
 
-                                            โต้ะที่ {{delete.id}}
+                                                โต้ะที่ {{delete.id}}
 
-                                        </div>
+                                            </div>
+                                        </center>
+                                        
                                         <div class="card-body">
                                             <h5 class="card-title"></h5>
                                             <p class="card-text"></p>

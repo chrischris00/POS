@@ -11,6 +11,7 @@ from .models import Bill_Setting
 
 from .models import Orderlish
 
+
 # Create your views here.
 # Start Tong
 log = []
@@ -90,7 +91,7 @@ def AddFood(request):
     print(request)
     print(fn)
     if(fn != False):
-        addtypefood=Order.objects.create(type_food = fn)
+        addtypefood=Order.objects.create(list=' ',priceorder=0,number = 0,price = 0,type_food = fn)
         addtypefood.save()
     
     data=Order.objects.all()
@@ -204,11 +205,10 @@ def AddTable(request):
     print(request)
     print(A)
     print(B)
-    if(A!= False and B!= False and C!= False and D!= False):
-        Tables=Table.objects.create(number = A,Quantity = B)
+    if(A!= False and B!= False):
+        Tables=Table.objects.create(number = A,Quantity = B,time=' ',Order_id =' ')
         Tables.save()
-        A = False
-        B = False
+        
     data=Table.objects.all()
     return render(request,'AddTable.html')
 

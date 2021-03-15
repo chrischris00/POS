@@ -54,7 +54,7 @@ class Orderlish(models.Model):
     number_table = models.TextField(max_length=255)
     status = models.TextField(max_length=3)
 class Order(models.Model):
-    Order_number = models.IntegerField(auto_created=True,primary_key=True)
+    Order_number = models.AutoField(auto_created=True,primary_key=True)
     list = models.TextField(max_length=255)
     priceorder = models.IntegerField()
     number = models.IntegerField()
@@ -67,7 +67,6 @@ class Bill_Setting(models.Model):
     VAT = models.IntegerField()
     SC = models.IntegerField()
     EndTextBill = models.TextField()
-
 
 
 
